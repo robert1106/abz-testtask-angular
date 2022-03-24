@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+  ) { }
+
+  data: any = {};
 
   ngOnInit(): void {
+    this.http.get('https://frontend-test-assignment-api.abz.agency/api/v1/users/1', {responseType: "json"})
+      .subscribe((res) => {
+        this.data = res;
+      })
   }
 
 }

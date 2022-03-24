@@ -9,6 +9,7 @@
   background-color: #fff
   box-shadow: 0 4px 15px rgba(0, 0, 0, .15)
   height: 60px
+  z-index: 1
 
   .wrap
     display: flex
@@ -18,7 +19,18 @@
 
     li
       display: inline-block
-      margin-left: 30.5px
+
+      .menu-btn
+        padding: 7px 15.2px
+        font-size: 16px
+        line-height: 56px
+        transition: all 0.2s ease-in-out
+        &:hover
+          background: rgba(0, 189, 211, 0.1)
+          border-radius: 4px
+          color: #00BDD3
+        &.active
+          color: #00BDD3
 
 .header
   background-color: #EDECEA
@@ -35,22 +47,19 @@
     .box
       width: 540px
 
-      .header-title
-        font-weight: 400
-        font-size: 40px
-        line-height: 40px
-
       .header-paragraph
-        margin: 21px 0 25px
-        font-weight: 400
+        margin: 21px 0 22px
         font-size: 16px
         line-height: 26px
 
-.acquaintance
-  background: #F8F8F8
-  padding: 180px 0 175px
+.section
+  background-color: #F8F8F8
+  background-image: url("../../assets/image/trace.svg")
+  background-repeat: no-repeat
+  background-position: bottom right
 
-  .wrap
+  .acquaintance
+    padding: 180px 0 190px
     display: flex
     justify-content: space-between
     .box
@@ -62,24 +71,95 @@
 
       .acquaintance-header
         margin-top: 3px
-        font-weight: 400
-        font-size: 40px
-        line-height: 40px
 
       .acquaintance-title
         margin-top: 10px
-        font-weight: 400
         font-size: 22px
         line-height: 28px
 
       .acquaintance-paragraph
         margin: 20px 0 31px
-        font-weight: 400
         font-size: 16px
         line-height: 26px
         text-align: right
 
-.sign-up
+  .block-header
+    text-align: center
+
+  .block-title
+    font-size: 22px
+    line-height: 28px
+    text-align: center
+    margin-top: 10px
+
+  .users-block
+    margin-bottom: 175px
+
+    .cards
+      display: grid
+      grid-template-columns: repeat(3, 1fr)
+      grid-gap: 30px
+      margin: 32px 0 0 0
+
+      .card
+        background: #FFFFFF
+        border-radius: 10px
+        padding: 36px 30px 28px
+        display: flex
+        flex-direction: column
+        align-items: center
+
+        .card-img
+          width: 70px
+          height: 70px
+          border-radius: 50%
+          margin-bottom: 15px
+
+        span
+          font-size: 16px
+          line-height: 26px
+          display: -webkit-box
+          -webkit-line-clamp: 2
+          -webkit-box-orient: vertical
+          overflow: hidden
+          text-align: center
+
+        .card-title
+          font-size: 22px
+          line-height: 28px
+          margin-bottom: 4px
+
+        p
+          font-size: 16px
+          line-height: 26px
+          width: 310px
+          white-space: nowrap
+          overflow: hidden
+          text-overflow: ellipsis
+          text-align: center
+
+  .register-block
+    padding-bottom: 180px
+
+  .wrap-btn
+    display: flex
+    justify-content: center
+    margin-top: 50px
+
+.footer
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 57px
+  border-top: 1px solid #E0E0E0
+
+  .footer-title
+    font-size: 16px
+    line-height: 26px
+
+.button
+  overflow: hidden
+  position: relative
   width: 148px
   height: 50px
   background: #F4E041
@@ -88,5 +168,38 @@
   font-weight: 400
   font-size: 16px
   line-height: 26px
+  &:after
+    position: absolute
+    content: ''
+    top: 0
+    left: 50%
+    width: 0
+    height: 0
+    background: rgba(126, 126, 126, 0.5)
+    border-radius: 80px
+    transition: all 0.3s ease-in-out
+  &:hover
+    background: #FFE302
+  &:disabled
+    background: #B4B4B4
+    color: #fff
+  &:focus
+    &:after
+      top: 0
+      left: 7px
+      width: 134px
+      height: 86px
+      transition: all 0.3s ease-in-out
+  &:active
+    &:after
+      top: 0
+      left: 14px
+      width: 120px
+      height: 50px
+      border-radius: 80px
+      transition: all 0.3s ease-in-out
+
+
+
 
 

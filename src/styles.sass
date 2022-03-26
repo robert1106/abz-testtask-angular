@@ -1,6 +1,13 @@
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss'
+@import '~@fortawesome/fontawesome-free/scss/solid.scss'
+@import '~@fortawesome/fontawesome-free/scss/regular.scss'
+@import '~@fortawesome/fontawesome-free/scss/brands.scss'
+
+@import '~mdb-angular-ui-kit/assets/scss/mdb.scss'
+
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap')
 
-*
+*, h1, h2, h3, p
   margin: 0
   padding: 0
   box-sizing: border-box
@@ -9,10 +16,10 @@
   font-size: 40px
   line-height: 40px
   font-weight: 400
-  color: rgba(0, 0, 0, 0.87)
 
 ul
   list-style: none
+  margin: 0
 
 a
   text-decoration: none
@@ -21,3 +28,22 @@ a
 button
   border-style: none
   cursor: pointer
+
+// settings mdb-input
+.form-outline .form-control ~ .form-notch .form-notch-leading
+  border-radius: 4px 0 0 4px
+.form-outline .form-control ~ .form-notch .form-notch-trailing
+  border-radius: 0 4px 4px 0
+.form-outline .form-control:focus ~ .form-notch .form-notch-leading
+  border-top: 2px solid #00BDD3
+  border-bottom: 2px solid #00BDD3
+  border-left: 2px solid #00BDD3
+.form-outline .form-control:focus ~ .form-notch .form-notch-middle
+  border-bottom: 2px solid
+  border-color: #00BDD3
+.form-outline .form-control:focus ~ .form-notch .form-notch-trailing
+  border-top: 2px solid #00BDD3
+  border-bottom: 2px solid #00BDD3
+  border-right: 2px solid #00BDD3
+
+

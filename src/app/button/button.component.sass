@@ -1,0 +1,47 @@
+// options button
+.button
+  overflow: hidden
+  position: relative
+  width: 148px
+  height: 50px
+  margin: 0
+  padding: 0
+  background: #F4E041
+  border-radius: 80px
+  font-style: normal
+  font-weight: 400
+  font-size: 16px
+  line-height: 26px
+  &:after
+    position: absolute
+    content: ''
+    top: 50%
+    left: 50%
+    width: 0
+    height: 0
+    background: rgba(126, 126, 126, 0.5)
+    border-radius: 80px
+    transition: all 0.3s ease-in-out
+  &:hover
+    background: #FFE302
+  &:disabled
+    background: #B4B4B4
+    color: #fff
+  &:focus:after
+    top: 0
+    left: 7px
+    width: 134px
+    height: 86px
+    transition: all 0.3s ease-in-out
+  &:active:after
+    top: 0
+    left: 14px
+    width: 120px
+    height: 50px
+    border-radius: 80px
+    transition: all 0.3s ease-in-out
+  &:not(:hover):after
+    top: 0
+    left: 50%
+    width: 0
+    height: 0

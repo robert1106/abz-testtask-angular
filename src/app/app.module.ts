@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from './app.component';
-import { HomePageComponent } from './home-page/home-page.component';
 
 // MDB Modules
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
@@ -23,11 +23,16 @@ import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalComponent } from './modal/modal.component';
+import { ButtonComponent } from './button/button.component';
+import { BurgerMenuComponent } from './burger-menu/burger-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent,
+    ModalComponent,
+    ButtonComponent,
+    BurgerMenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +53,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MdbTabsModule,
     MdbTooltipModule,
     MdbValidationModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

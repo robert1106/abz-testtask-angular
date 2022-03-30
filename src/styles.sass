@@ -6,6 +6,10 @@
 @import '~mdb-angular-ui-kit/assets/scss/mdb.scss'
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Asap&display=swap')
+
+// regular style toast
+@import '~ngx-toastr/toastr'
 
 *, h1, h2, h3, p
   margin: 0
@@ -17,7 +21,7 @@
   line-height: 40px
   font-weight: 400
 
-ul
+ul, li
   list-style: none
   margin: 0
 
@@ -45,12 +49,32 @@ button
   border-top: 2px solid #00BDD3
   border-bottom: 2px solid #00BDD3
   border-right: 2px solid #00BDD3
+.form-outline .form-control.active ~ .form-label
+  transform: translateX(-4px) translateY(-22px) scale(0.8)
 
 
 // settings mdb-modal
-.modal-content
-  border-radius: 4px
-  padding: 24px
-  max-width: 452px
+.modal-dialog
+  width: auto
+  margin: 0
+
+  .modal-content
+    display: block
+    background-color: inherit
+    border: none
+    border-radius: 0
+    box-shadow: none
+
+@media (min-width: 576px)
+  .modal-dialog
+    width: auto
+    max-width: 100%
+    margin: 0
+
+.toast-container
+  .toast-message
+    font-size: 18px
+
+
 
 

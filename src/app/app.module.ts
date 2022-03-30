@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 
@@ -26,6 +27,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalComponent } from './modal/modal.component';
 import { ButtonComponent } from './button/button.component';
 import { BurgerMenuComponent } from './burger-menu/burger-menu.component';
+import { ToastrModule } from "ngx-toastr";
+
+const appRoutes: Routes = [
+  {
+    path: '',
+    component: AppComponent,
+  },
+  {
+    path: '**', redirectTo: ''
+  }
+];
+export const routing = RouterModule.forRoot(appRoutes);
 
 @NgModule({
   declarations: [
@@ -55,6 +68,7 @@ import { BurgerMenuComponent } from './burger-menu/burger-menu.component';
     MdbValidationModule,
     FormsModule,
     ReactiveFormsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

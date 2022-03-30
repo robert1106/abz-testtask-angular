@@ -2,21 +2,22 @@
   <div class="container-personal">
     <div class="wrap">
       <img src="../assets/image/logo.svg" alt="Logo image">
-      <div class="menu-list">
-        <div class="wrap-link"><a class="menu-btn active" href="#">About me</a></div>
-        <div class="wrap-link"><a class="menu-btn" href="#">Relationships</a></div>
-        <div class="wrap-link"><a class="menu-btn" href="#">Requirements</a></div>
-        <div class="wrap-link"><a class="menu-btn" href="#">Users</a></div>
-        <div class="wrap-link"><a class="menu-btn" href="#">Sign Up</a></div>
-        <button class="menu-burger"></button>
-      </div>
+      <ul class="menu-list">
+        <li *ngFor="let menuItem of menuList">
+          <a [class]="'menu-btn ' + activeClassMenuItem(menuItem.content)"
+             [href]="'#' + menuItem.href" (click)="activeMenuItem = menuItem.content">
+            {{ menuItem.content }}
+          </a>
+        </li>
+      </ul>
+      <button class="menu-burger" (click)="openBurgerMenu()"></button>
     </div>
   </div>
 </menu>
-<header class="header">
+<header class="header" id="header">
   <div class="container-personal">
     <div class="wrap">
-      <div class="box-personal" >
+      <div class="box-personal">
         <h2>Test assignment for front-end developers</h2>
         <p class="header-paragraph">Front-end developers make sure the user sees and interacts with all the necessary
           elements to ensure conversion. Therefore, responsive design, programming languages and specific frameworks
@@ -41,6 +42,7 @@
       </div>
     </div>
     <div class="users-block">
+      <div id="users"></div>
       <h2 class="block-header">Our cheerful users</h2>
       <p class="block-title">The best specialists are shown below</p>
       <div class="cards">
@@ -64,35 +66,50 @@
       </div>
     </div>
     <form class="register-block" [formGroup]="form" novalidate>
+      <div id="register"></div>
       <h2 class="block-header">Register to get a work</h2>
       <p class="block-title">Your personal data is stored according to the Privacy Policy</p>
       <div class="mdb-input-wrap">
         <mdb-form-control>
-          <input mdbInput type="text" id="name" class="form-control" formControlName="name" mdbValidate="false"/>
+          <input class="form-control" mdbInput type="text" id="name"
+                 [class.ng-touched]="name!.errors?.['serverError']"
+                 formControlName="name" mdbValidate="false"/>
           <label mdbLabel class="form-label" for="name">Your name</label>
+          <span class="input-error"
+                [hidden]="!form.get('name')!.dirty || form.get('name')!.valid || name!.errors?.['serverError']">
+            {{ name!.errors?.['serverError'] || 'Invalid' }}
+          </span>
         </mdb-form-control>
         <mdb-form-control>
-          <input mdbInput type="email" id="email" class="form-control" formControlName="email"/>
+          <input mdbInput type="email" id="email" class="form-control" formControlName="email" mdbValidate="false"/>
           <label mdbLabel class="form-label" for="email">Email</label>
+          <span class="input-error"
+                [hidden]="!form.get('email')!.dirty || form.get('email')!.valid || email!.errors?.['serverError']">
+            {{ email!.errors?.['serverError'] || 'Invalid' }}
+          </span>
         </mdb-form-control>
         <mdb-form-control>
-          <input mdbInput type="tel" id="phone" class="form-control" formControlName="phone"/>
+          <input mdbInput type="tel" id="phone" class="form-control" formControlName="phone" mdbValidate="false"/>
           <label mdbLabel class="form-label" for="phone">Phone</label>
+          <span class="input-error"
+                [hidden]="!form.get('phone')!.dirty || form.get('phone')!.valid || phone!.errors?.['serverError']">
+            {{ phone!.errors?.['serverError'] || 'Invalid' }}
+          </span>
         </mdb-form-control>
       </div>
       <div class="mdb-input-buttons-wrap">
         <span class="radio-buttons-title">Select your position</span>
         <ul class="radio-buttons-wrap">
           <li class="radio-buttons-box" *ngFor="let position of positions">
-            <input id="{{position.id}}" type="radio" value="{{position.id}}" name="position_id" class="options-input"
+            <input id="{{position.id}}" type="radio" value="{{ position.id }}" name="position_id" class="options-input"
                    formControlName="position_id">
-            <label for="{{position.id}}" class="options-label">{{position.name}}</label>
+            <label for="{{position.id}}" class="options-label">{{ position.name }}</label>
           </li>
         </ul>
         <label class="block-file">
           <input class="block-file-input" type="file" name="file" accept="image/jpeg" (change)="onFileChanged($event)">
           <span class="block-file-label">Upload</span>
-          <span class="block-file-photo">Upload your photo</span>
+          <span class="block-file-photo">{{photoName}}</span>
         </label>
       </div>
       <div class="wrap-btn">

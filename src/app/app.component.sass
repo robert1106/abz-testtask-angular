@@ -1,3 +1,24 @@
+%heading1
+  font-family: 'Nunito', sans-serif
+  font-style: normal
+  font-size: 40px
+  line-height: 40px
+
+%heading2
+  font-family: 'Nunito', sans-serif
+  font-style: normal
+  font-size: 22px
+  line-height: 28px
+
+%text
+  font-family: 'Asap', sans-serif
+  font-style: normal
+  font-size: 16px
+  line-height: 26px
+
+$blue: #00BDD3
+$light-gray: #F8F8F8
+
 .container-personal
   max-width: 1200px
   margin: 0 auto
@@ -19,8 +40,8 @@
     align-items: center
     height: 100%
 
-    .wrap-link
-      display: inline-block
+    .menu-list
+      display: flex
 
       .menu-btn
         padding: 7px 15.2px
@@ -30,9 +51,9 @@
         &:hover
           background: rgba(0, 189, 211, 0.1)
           border-radius: 4px
-          color: #00BDD3
+          color: $blue
         &.active
-          color: #00BDD3
+          color: $blue
 
     .menu-burger
       display: none
@@ -58,11 +79,10 @@
 
       .header-paragraph
         margin: 21px 0 22px
-        font-size: 16px
-        line-height: 26px
+        @extend %text
 
 .section
-  background-color: #F8F8F8
+  background-color: $light-gray
   background-image: url("../assets/image/trace.svg")
   background-repeat: no-repeat
   background-position: bottom right
@@ -83,26 +103,28 @@
 
       .acquaintance-title
         margin: 10px 0 0 0
-        font-size: 22px
-        line-height: 28px
+        @extend %heading2
 
       .acquaintance-paragraph
         margin: 20px 0 28px
-        font-size: 16px
-        line-height: 26px
+        @extend %text
         text-align: right
 
   .block-header
     text-align: center
 
   .block-title
-    font-size: 22px
-    line-height: 28px
+    @extend %heading2
     text-align: center
     margin-top: 10px
 
   .users-block
+    position: relative
     margin-bottom: 175px
+
+    #users
+      position: absolute
+      top: -100px
 
     .cards
       display: grid
@@ -128,8 +150,7 @@
         span
 
           max-width: 100%
-          font-size: 16px
-          line-height: 26px
+          @extend %text
           display: -webkit-box
           -webkit-line-clamp: 2
           -webkit-box-orient: vertical
@@ -137,13 +158,11 @@
           text-align: center
 
         .card-title
-          font-size: 22px
-          line-height: 28px
+          @extend %heading2
           margin-bottom: 4px
 
         p
-          font-size: 16px
-          line-height: 26px
+          @extend %text
           max-width: 100%
           white-space: nowrap
           overflow: hidden
@@ -152,11 +171,23 @@
 
   .register-block
     padding-bottom: 180px
+    position: relative
+
+    #register
+      position: absolute
+      top: -100px
 
     .mdb-input-wrap
       margin: 32px 0 43px
       display: grid
       grid-row-gap: 50px
+
+      .input-error
+        line-height: 22px
+        padding-left: 15px
+        display: block
+        font-size: 12px
+        color: #f93154
 
     .mdb-input-buttons-wrap
       width: 380px
@@ -166,8 +197,7 @@
       align-items: start
 
       .radio-buttons-title
-        font-size: 16px
-        line-height: 26px
+        @extend %text
 
       .radio-buttons-wrap
         display: grid
@@ -192,19 +222,20 @@
       .form-control
         width: 380px
         height: 54px
-        font-size: 16px
-        line-height: 26px
+        @extend %text
         padding: 16px 14px
         border-radius: 4px
         transform: translate(0, 0)
         &:focus ~ .form-label
-          color: #00BDD3
+          color: $blue
           transform: translateX(-4px) translateY(-22px) scale(0.8)
 
       .form-label
-        font-size: 16px
+        @extend %text
         line-height: 25px
         left: 16px
+
+
 
 
 
@@ -221,8 +252,7 @@
   border-top: 1px solid #E0E0E0
 
   .footer-title
-    font-size: 16px
-    line-height: 26px
+    @extend %text
 
 // input-radio options -----------------------
 .options-input
@@ -232,15 +262,14 @@
   &::after
     transform: scale(1)
   &::before
-    border-color: #00BDD3
+    border-color: $blue
 
 .options-label
   display: inline-flex
   align-items: center
   position: relative
   white-space: nowrap
-  font-size: 16px
-  line-height: 26px
+  @extend %text
 
 .options-label::before
   content: ''
@@ -257,7 +286,7 @@
   left: 5px
   width: 10px
   height: 10px
-  background-color: #00BDD3
+  background-color: $blue
   border-radius: 50%
   transform: scale(0)
   transition: transform 0.5s ease 0s
@@ -292,6 +321,9 @@
     border: 1px solid #D0CFCF
     border-left: 0
     border-radius: 0 4px 4px 0
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
     &:hover
       border: 1px solid rgba(0, 0, 0, 0.87)
       border-left: 0
@@ -314,11 +346,31 @@
           margin: 20px 0 29px
     .users-block .cards
       margin: 32px 0 47px
+
+@media (max-width: 1200px)
+  .container-personal
+    max-width: 934px
+  .menu .wrap li .menu-btn
+    padding: 7px 15.4px
+  .section
+    .acquaintance
+      padding: 175px 0
+      .box-personal
+        width: 477px
+        .acquaintance-header
+          margin: 0
+        .acquaintance-title
+          margin: 10px 0 0 0
+        .acquaintance-paragraph
+          margin: 20px 0 29px
+    .users-block .cards
+      margin: 32px 0 47px
+
 @media (max-width: 934px)
   .container-personal
     max-width: 734px
   .menu .wrap
-    .wrap-link
+    .menu-btn
       display: none
     .menu-burger
       display: block
@@ -401,9 +453,3 @@
       max-width: 100%
       .block-file-photo
         width: 245px
-
-
-
-
-
-
